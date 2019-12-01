@@ -6,8 +6,10 @@
   --mainGrey: #fafafa;
   --darkGrey: #5f5e5e;
   --mainBlack: #222;
-  --mainTransition: all 0.3 ease-in-out;
+  --mainWhite: #fff;
+  --mainTransition: all 0.3s ease-in-out;
   --mainSpacing: 0.3rem;
+
 }
 
 .text-title {
@@ -24,5 +26,29 @@
 body {
   font-family: 'Open Sans', sans-serif !important;
   background: var(--mainGrey) !important;
-  color: var(--mainBlack);
+  color: var(--mainBlack) !important;
+}
+
+.main-link {
+  padding: 0.5rem 1rem;
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  outline: 2px solid var(--primaryColor);
+  outline-offset: 4px;
+  border: none;
+  transition: var(--mainTransition);
+}
+
+.main-link:hover {
+  background: var(--darkGrey);
+  text-decoration: none;
+  color: var(--primaryColor);
+  outline-color: var(--darkGrey);
+}
+
+.cart-icon {
+  cursor: pointer;
 }

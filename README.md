@@ -1,4 +1,4 @@
-# Cloud Contact
+# Tech Shop
 
 Tech Shop is a Tech Product Selling App With Shopping cart.
 

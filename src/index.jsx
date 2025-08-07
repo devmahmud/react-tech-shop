@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import App from './App';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import reducer from './store/reducers';
 
 const store = createStore(reducer, {}, applyMiddleware(thunk));
@@ -13,7 +13,7 @@ const root = createRoot(document.getElementById('root'));
 
 root.render(
   <Provider store={store}>
-    <Router>
+    <Router basename="/react-tech-shop">
       <App />
     </Router>
   </Provider>

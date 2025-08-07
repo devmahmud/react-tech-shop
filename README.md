@@ -15,7 +15,7 @@ A modern React e-commerce application built with Vite, React 18, Redux, and Reac
 
 - **Build Tool**: Vite 7.1.0
 - **Framework**: React 18.2.0
-- **Routing**: React Router v6
+- **Routing**: React Router v6 (HashRouter for GitHub Pages)
 - **State Management**: Redux with Redux Thunk
 - **Styling**: Bootstrap 5 + Styled Components
 - **Icons**: React Icons
@@ -60,6 +60,21 @@ Preview the production build:
 ```bash
 npm run preview
 ```
+
+## Deployment
+
+### GitHub Pages
+
+This application is configured for deployment on GitHub Pages using HashRouter for proper routing.
+
+**Live Demo**: [https://devmahmud.github.io](https://devmahmud.github.io)
+
+To deploy updates:
+```bash
+npm run deploy
+```
+
+**Note**: The application uses HashRouter instead of BrowserRouter to ensure proper routing on GitHub Pages.
 
 ## Project Structure
 

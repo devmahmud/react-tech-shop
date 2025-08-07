@@ -1,26 +1,22 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { handleSidebar } from "../store/actions/products";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleSidebar } from '../store/actions/products';
 
 function Sidebar() {
   const dispatch = useDispatch();
   const { links, sideBarOpen } = useSelector((state) => ({
     links: state.products.links,
-    sideBarOpen: state.products.sideBarOpen
+    sideBarOpen: state.products.sideBarOpen,
   }));
 
   return (
     <SideWrapper show={sideBarOpen}>
       <ul>
-        {links.map(link => (
+        {links.map((link) => (
           <li key={link.id}>
-            <Link
-              to={link.path}
-              className="sidebar-link"
-              onClick={() => dispatch(handleSidebar())}
-            >
+            <Link to={link.path} className="sidebar-link" onClick={() => dispatch(handleSidebar())}>
               {link.text}
             </Link>
           </li>
@@ -40,7 +36,7 @@ const SideWrapper = styled.nav`
   z-index: 1;
   border-right: 4px solid var(--primaryColor);
   transition: var(--mainTransition);
-  transform: ${props => (props.show ? "translateX(0)" : "translateX(-100%)")};
+  transform: ${(props) => (props.show ? 'translateX(0)' : 'translateX(-100%)')};
   ul {
     list-style-type: none;
     padding: 0 !important;

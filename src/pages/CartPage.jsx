@@ -1,7 +1,7 @@
-import React from "react";
-import Hero from "../components/Hero";
-import Cart from "../components/CartPage/Cart";
-import cartBcg from "../images/storeBcg.jpeg";
+import React from 'react';
+import Hero from '../components/Hero';
+import Cart from '../components/CartPage/Cart';
+import cartBcg from '../images/storeBcg.jpeg';
 
 function CartPage() {
   return (

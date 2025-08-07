@@ -1,8 +1,8 @@
-import React from "react";
-import Hero from "../components/Hero";
-import Services from "../components/HomePage/Services";
-import Featured from "../components/HomePage/Featured";
-import mainBcg from "../images/mainBcg.jpeg";
+import React from 'react';
+import Hero from '../components/Hero';
+import Services from '../components/HomePage/Services';
+import Featured from '../components/HomePage/Featured';
+import mainBcg from '../images/mainBcg.jpeg';
 
 function HomePage() {
   return (

@@ -1,35 +1,31 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { handleCart } from "../store/actions/products";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { handleCart } from '../store/actions/products';
 
 function Sidecart() {
   const dispatch = useDispatch();
   const { cartOpen, cart, cartTotal } = useSelector((state) => ({
     cartOpen: state.products.cartOpen,
     cart: state.products.cart,
-    cartTotal: state.products.cartTotal
+    cartTotal: state.products.cartTotal,
   }));
 
   return (
     <CartWrapper show={cartOpen} onClick={() => dispatch(handleCart())}>
       <ul>
-        {cart.map(item => (
+        {cart.map((item) => (
           <li key={item.id} className="cart-item mb-4">
-            <img src={`../${item.image}`} alt="cart item" width="35" />
+            <img src={item.image} alt="cart item" width="35" />
             <div className="mt-3">
               <h6 className="text-uppercase">{item.title}</h6>
-              <h6 className="text-title text-capitalize">
-                amount: {item.count}
-              </h6>
+              <h6 className="text-title text-capitalize">amount: {item.count}</h6>
             </div>
           </li>
         ))}
       </ul>
-      <h4 className="text-capitalize text-main">
-        cart total: ${cartTotal}
-      </h4>
+      <h4 className="text-capitalize text-main">cart total: ${cartTotal}</h4>
       <div className="text-center my-5">
         <Link to="/cart" className="main-link">
           cart page
@@ -48,7 +44,7 @@ const CartWrapper = styled.div`
   background: var(--mainGrey);
   z-index: 1;
   border-left: 4px solid var(--primaryColor);
-  transform: ${props => (props.show ? "translateX(0)" : "translateX(100%)")};
+  transform: ${(props) => (props.show ? 'translateX(0)' : 'translateX(100%)')};
   transition: var(--mainTransition);
   @media (min-width: 576px) {
     width: 20rem;

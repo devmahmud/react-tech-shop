@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import { FaBars, FaCartPlus } from "react-icons/fa";
-import logo from "../images/logo.svg";
-import { handleSidebar, handleCart } from "../store/actions/products";
+import React from 'react';
+import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { FaBars, FaCartPlus } from 'react-icons/fa';
+import logo from '../images/logo.svg';
+import { handleSidebar, handleCart } from '../store/actions/products';
 
 function Navbar() {
   const dispatch = useDispatch();

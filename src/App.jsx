@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
@@ -16,14 +16,15 @@ import Cart from './pages/CartPage';
 import Default from './pages/Default';
 import { getProducts } from './store/actions/products';
 
-function App(props) {
+function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    props.getProducts();
-    //eslint-disable-next-line
-  }, []);
+    dispatch(getProducts());
+  }, [dispatch]);
 
   return (
-    <React.Fragment>
+    <>
       {/** navbar,sidebar,cart,footer */}
       <Navbar />
       <Sidebar />
@@ -39,8 +40,8 @@ function App(props) {
         <Route path="*" element={<Default />} />
       </Routes>
       <Footer />
-    </React.Fragment>
+    </>
   );
 }
 
-export default connect(null, { getProducts })(App);
+export default App;

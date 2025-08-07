@@ -1,19 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FaBars, FaCartPlus } from "react-icons/fa";
 import logo from "../images/logo.svg";
 import { handleSidebar, handleCart } from "../store/actions/products";
 
-function Navbar(props) {
+function Navbar() {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.products.cartItems);
+
   return (
     <NavWrapper>
       <div className="nav-center">
-        <FaBars className="nav-icon" onClick={props.handleSidebar} />
+        <FaBars className="nav-icon" onClick={() => dispatch(handleSidebar())} />
         <img src={logo} alt="tech shop logo" />
         <div className="nav-cart">
-          <FaCartPlus className="nav-icon" onClick={props.handleCart} />
-          <div className="cart-items">{props.cartItems}</div>
+          <FaCartPlus className="nav-icon" onClick={() => dispatch(handleCart())} />
+          <div className="cart-items">{cartItems}</div>
         </div>
       </div>
     </NavWrapper>
@@ -54,8 +57,4 @@ const NavWrapper = styled.nav`
   }
 `;
 
-const mapStatesToProps = state => {
-  return { cartItems: state.products.cartItems };
-};
-
-export default connect(mapStatesToProps, { handleSidebar, handleCart })(Navbar);
+export default Navbar;

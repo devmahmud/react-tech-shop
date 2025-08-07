@@ -1,14 +1,15 @@
-import React from 'react';
-import Info from '../components/AboutPage/Info';
-import Hero from '../components/Hero';
-import aboutBcg from '../images/aboutBcg.jpeg';
+import React from "react";
+import Hero from "../components/Hero";
+import Info from "../components/AboutPage/Info";
+import aboutBcg from "../images/aboutBcg.jpeg";
 
 function AboutPage() {
   return (
-    <React.Fragment>
-      <Hero img={aboutBcg} />
+    <>
+      <Hero img={aboutBcg} title="about us" />
       <Info />
-    </React.Fragment>
+    </>
   );
 }
+
 export default AboutPage;

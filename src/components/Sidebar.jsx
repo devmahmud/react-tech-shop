@@ -1,19 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { handleSidebar } from "../store/actions/products";
 
-function Sidebar(props) {
+function Sidebar() {
+  const dispatch = useDispatch();
+  const { links, sideBarOpen } = useSelector((state) => ({
+    links: state.products.links,
+    sideBarOpen: state.products.sideBarOpen
+  }));
+
   return (
-    <SideWrapper show={props.sideBarOpen}>
+    <SideWrapper show={sideBarOpen}>
       <ul>
-        {props.links.map(link => (
+        {links.map(link => (
           <li key={link.id}>
             <Link
               to={link.path}
               className="sidebar-link"
-              onClick={props.handleSidebar}
+              onClick={() => dispatch(handleSidebar())}
             >
               {link.text}
             </Link>
@@ -59,11 +65,4 @@ const SideWrapper = styled.nav`
   }
 `;
 
-const mapStatesToProps = ({ products }) => {
-  return {
-    links: products.links,
-    sideBarOpen: products.sideBarOpen
-  };
-};
-
-export default connect(mapStatesToProps, { handleSidebar })(Sidebar);
+export default Sidebar;

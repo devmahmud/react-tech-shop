@@ -1,14 +1,21 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { handleCart } from "../store/actions/products";
 
-function Sidecart(props) {
+function Sidecart() {
+  const dispatch = useDispatch();
+  const { cartOpen, cart, cartTotal } = useSelector((state) => ({
+    cartOpen: state.products.cartOpen,
+    cart: state.products.cart,
+    cartTotal: state.products.cartTotal
+  }));
+
   return (
-    <CartWrapper show={props.cartOpen} onClick={props.handleCart}>
+    <CartWrapper show={cartOpen} onClick={() => dispatch(handleCart())}>
       <ul>
-        {props.cart.map(item => (
+        {cart.map(item => (
           <li key={item.id} className="cart-item mb-4">
             <img src={`../${item.image}`} alt="cart item" width="35" />
             <div className="mt-3">
@@ -21,7 +28,7 @@ function Sidecart(props) {
         ))}
       </ul>
       <h4 className="text-capitalize text-main">
-        cart total: ${props.cartTotal}
+        cart total: ${cartTotal}
       </h4>
       <div className="text-center my-5">
         <Link to="/cart" className="main-link">
@@ -32,13 +39,6 @@ function Sidecart(props) {
   );
 }
 
-const mapStatesToProps = ({ products }) => {
-  return {
-    cartOpen: products.cartOpen,
-    cart: products.cart,
-    cartTotal: products.cartTotal
-  };
-};
 const CartWrapper = styled.div`
   position: fixed;
   top: 60px;
@@ -63,4 +63,4 @@ const CartWrapper = styled.div`
   }
 `;
 
-export default connect(mapStatesToProps, { handleCart })(Sidecart);
+export default Sidecart;

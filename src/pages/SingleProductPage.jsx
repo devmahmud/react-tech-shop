@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, getStorageProduct } from '../store/actions/products';
 import Hero from '../components/Hero';
 import singleProductImg from '../images/singleProductBcg.jpeg';
 
-function SingleProductPage({ product, loading, addToCart, getStorageProduct }) {
+function SingleProductPage() {
+  const dispatch = useDispatch();
+  const { product, loading } = useSelector((state) => ({
+    product: state.products.singleProduct,
+    loading: state.products.loading,
+  }));
+
   useEffect(() => {
-    getStorageProduct();
-    //eslint-disable-next-line
-  }, []);
+    dispatch(getStorageProduct());
+  }, [dispatch]);
 
   return (
-    <React.Fragment>
+    <>
       <Hero img={singleProductImg} title="single product" />
       {loading && <h1>product is loading...</h1>}
       <section className="py-5">
@@ -27,7 +32,7 @@ function SingleProductPage({ product, loading, addToCart, getStorageProduct }) {
               <h5 className="text-main text-capitalize mb-4">price: ${product.price}</h5>
               <p className="text-title mt-3">some info about product:</p>
               <p>{product.description}</p>
-              <button className="main-link m-2" onClick={() => addToCart(product.id)}>
+              <button className="main-link m-2" onClick={() => dispatch(addToCart(product.id))}>
                 add to cart
               </button>
               <Link to="/products" className="main-link m-2">
@@ -37,11 +42,8 @@ function SingleProductPage({ product, loading, addToCart, getStorageProduct }) {
           </div>
         </div>
       </section>
-    </React.Fragment>
+    </>
   );
 }
-const mapStatesToProps = ({ products }) => {
-  return { product: products.singleProduct, loading: products.loading };
-};
 
-export default connect(mapStatesToProps, { addToCart, getStorageProduct })(SingleProductPage);
+export default SingleProductPage;

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "homepage": "https://devmahmud.github.io/react-tech-shop",
+  "homepage": "https://devmahmud.github.io",
   "dependencies": {
     "bootstrap": "^5.3.7",
     "react": "^18.2.0",

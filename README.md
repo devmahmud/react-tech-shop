@@ -15,7 +15,7 @@ A modern React e-commerce application built with Vite, React 18, Redux, and Reac
 
 - **Build Tool**: Vite 7.1.0
 - **Framework**: React 18.2.0
-- **Routing**: React Router v6 (HashRouter for GitHub Pages)
+- **Routing**: React Router v6
 - **State Management**: Redux with Redux Thunk
 - **Styling**: Bootstrap 5 + Styled Components
 - **Icons**: React Icons
@@ -63,18 +63,25 @@ npm run preview
 
 ## Deployment
 
-### GitHub Pages
+### Vercel
 
-This application is configured for deployment on GitHub Pages using HashRouter for proper routing.
+This application is configured for deployment on Vercel with proper routing support.
 
-**Live Demo**: [https://devmahmud.github.io](https://devmahmud.github.io)
+To deploy to Vercel:
 
-To deploy updates:
+1. Install Vercel CLI:
 ```bash
-npm run deploy
+npm i -g vercel
 ```
 
-**Note**: The application uses HashRouter instead of BrowserRouter to ensure proper routing on GitHub Pages.
+2. Deploy:
+```bash
+vercel
+```
+
+Or connect your GitHub repository to Vercel for automatic deployments.
+
+**Note**: The application uses BrowserRouter with Vercel's rewrite rules for proper client-side routing.
 
 ## Project Structure
 

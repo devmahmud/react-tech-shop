@@ -13,7 +13,7 @@ const root = createRoot(document.getElementById('root'));
 
 root.render(
   <Provider store={store}>
-    <Router basename="/react-tech-shop">
+    <Router>
       <App />
     </Router>
   </Provider>
